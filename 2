@@ -1,0 +1,39 @@
+	while (number > 0)
+	{
+		int o = 0, d = 0, s = 0, buffer = number; //Единиц, десятков, сотен
+
+		if (number >= 1000000)
+			number /= 1000000;
+		else if (number >= 1000)
+			number /= 1000;
+
+		if (number >= 100)
+		{
+			s = number / 100;
+			number %= 100;
+		}
+		if (number >= 10)
+		{
+			d = number / 10;
+			number %= 10;
+		}
+		o = number;
+
+		if (buffer >= 1000000)
+		{
+			int offset = 0;
+
+			if (s > 0)
+				printf("%s ", map[3][s - 1]);
+			if (d > 0)
+			{
+				if (d > 1)
+				{
+					printf("%s ", map[2][d - 2]);
+				}
+				else
+				{
+					printf("%s ", map[1][o]);
+					o = 0;
+					offset = 0;
+				}
